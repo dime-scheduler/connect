@@ -1,0 +1,9 @@
+exclude_patterns:
+- "docs/"
+- "examples/"
+- "src/test/"
+
+checks:
+  similar-code:
+    config:
+      threshold: 100
