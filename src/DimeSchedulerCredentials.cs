@@ -2,15 +2,17 @@
 
 namespace Dime.Scheduler.AzureFunctions.Test
 {
-    internal static class DimeSchedulerCredentials
+    internal class DimeSchedulerCredentials
     {
-        internal static string Uri => GetEnvironmentVariable(nameof(Uri));
-        internal static string User => GetEnvironmentVariable(nameof(User));
-        internal static string Password => GetEnvironmentVariable(nameof(Password));
-
-        private static string GetEnvironmentVariable(string name)
+        public DimeSchedulerCredentials(string uri, string user, string password)
         {
-            return Environment.GetEnvironmentVariable(name, EnvironmentVariableTarget.Process);
+            Uri = uri;
+            User = user;
+            Password = password;
         }
+
+        internal string Uri { get; set; }
+        internal string User { get; set; }
+        internal string Password { get; set; }
     }
 }

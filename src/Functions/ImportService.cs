@@ -15,24 +15,28 @@ namespace Dime.Scheduler.AzureFunctions.Test
         {
             log.LogInformation("Received request to send data to Dime.Scheduler");
 
+            string user = req.Headers["ds-user"];
+            string password = req.Headers["ds-password"];
+            string url = req.Headers["ds-uri"];
+
+            if(string.IsNullOrEmpty(user))
+                return new BadRequestObjectResult("A Dime.Scheduler header is missing. Make sure to pass ds-user to the request headers");
+            if (string.IsNullOrEmpty(password))
+                return new BadRequestObjectResult("A Dime.Scheduler header is missing. Make sure to pass ds-password to the request headers");
+            if (string.IsNullOrEmpty(url))
+                return new BadRequestObjectResult("A Dime.Scheduler header is missing. Make sure to pass ds-uri to the request headers");
+
+            DimeSchedulerCredentials credentials = new DimeSchedulerCredentials(url, user, password);
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
             T category = JsonConvert.DeserializeObject<T>(requestBody);
 
-            string responseMessage = category == null
-                ? "This HTTP triggered function executed successfully. Pass a valid entity in the request body to import the data to Dime.Scheduler."
-                : $"This HTTP triggered function executed successfully.";
-
-            IAuthenticator authenticator = new FormsAuthenticator
-                    (DimeSchedulerCredentials.Uri,
-                    DimeSchedulerCredentials.User,
-                    DimeSchedulerCredentials.Password);
-
-            DimeSchedulerClient client = new(DimeSchedulerCredentials.Uri, authenticator);
+            IAuthenticator authenticator = new FormsAuthenticator(credentials.Uri, credentials.User, credentials.Password);
+            DimeSchedulerClient client = new(credentials.Uri, authenticator);
 
             IImportEndpoint importEndpoint = await client.Import.Request();
-            await importEndpoint.ProcessAsync(category, TransactionType.Append);
+            ImportSet importSet = await importEndpoint.ProcessAsync(category, TransactionType.Append);
 
-            return new OkObjectResult(responseMessage);
+            return new OkObjectResult(importSet);
         }
     }
 }
