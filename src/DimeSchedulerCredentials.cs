@@ -1,10 +1,8 @@
-﻿using System;
-
-namespace Dime.Scheduler.AzureFunctions.Test
+﻿namespace Dime.Scheduler.Connect.Test
 {
     internal class DimeSchedulerCredentials
     {
-        public DimeSchedulerCredentials(string uri, string user, string password)
+        internal DimeSchedulerCredentials(string uri, string user, string password)
         {
             Uri = uri;
             User = user;

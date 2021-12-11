@@ -1,13 +1,12 @@
-using System.IO;
-using System.Threading.Tasks;
 using Dime.Scheduler.Sdk.Import;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.Extensions.Logging;
+using System.Threading.Tasks;
 
-namespace Dime.Scheduler.AzureFunctions.Test
+namespace Dime.Scheduler.Connect.Test
 {
     public class SendCategoryFunction : ImportService<Category>
     {
