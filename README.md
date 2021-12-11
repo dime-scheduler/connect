@@ -2,11 +2,9 @@
     <img src="assets/cloud.svg?raw=true" width=150>
 </p>
 
-</p>
-<h1 align="center">Dime.Scheduler Azure Functions</h1>
+<h1 align="center">Dime.Scheduler Connect</h1>
 
-Connect with Dime.Scheduler through Azure Functions.
-
+Connect with Dime.Scheduler through an Azure Function.
 
 ## Contributing
 
