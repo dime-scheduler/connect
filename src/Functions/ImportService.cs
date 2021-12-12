@@ -18,23 +18,24 @@ namespace Dime.Scheduler.Connect.Test
             string user = req.Headers["ds-user"];
             string password = req.Headers["ds-password"];
             string url = req.Headers["ds-uri"];
+            bool append = string.IsNullOrEmpty(req.Headers["ds-append"]) || bool.Parse(req.Headers["ds-append"]);
 
             if (string.IsNullOrEmpty(user))
-                return new BadRequestObjectResult("A Dime.Scheduler header is missing. Make sure to pass ds-user to the request headers");
+                return new BadRequestObjectResult(ResponseMessages.UserMissing);
             if (string.IsNullOrEmpty(password))
-                return new BadRequestObjectResult("A Dime.Scheduler header is missing. Make sure to pass ds-password to the request headers");
+                return new BadRequestObjectResult(ResponseMessages.PasswordMissing);
             if (string.IsNullOrEmpty(url))
-                return new BadRequestObjectResult("A Dime.Scheduler header is missing. Make sure to pass ds-uri to the request headers");
+                return new BadRequestObjectResult(ResponseMessages.UriMissing);
 
             DimeSchedulerCredentials credentials = new(url, user, password);
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
-            T category = JsonConvert.DeserializeObject<T>(requestBody);
+            T entity = JsonConvert.DeserializeObject<T>(requestBody);
 
             IAuthenticator authenticator = new FormsAuthenticator(credentials.Uri, credentials.User, credentials.Password);
             DimeSchedulerClient client = new(credentials.Uri, authenticator);
 
             IImportEndpoint importEndpoint = await client.Import.Request();
-            ImportSet importSet = await importEndpoint.ProcessAsync(category, TransactionType.Append);
+            ImportSet importSet = await importEndpoint.ProcessAsync(entity, append ? TransactionType.Append : TransactionType.Delete);
 
             return new OkObjectResult(importSet);
         }
