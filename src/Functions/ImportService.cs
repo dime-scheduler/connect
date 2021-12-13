@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 using System.IO;
 using System.Threading.Tasks;
 
-namespace Dime.Scheduler.Connect.Test
+namespace Dime.Scheduler.Connect
 {
     public abstract class ImportService<T> where T : IImportRequestable
     {

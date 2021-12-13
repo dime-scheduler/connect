@@ -1,4 +1,4 @@
-﻿namespace Dime.Scheduler.Connect.Test
+﻿namespace Dime.Scheduler.Connect
 {
     internal class DimeSchedulerCredentials
     {
