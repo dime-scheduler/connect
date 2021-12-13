@@ -12,7 +12,7 @@ namespace Dime.Scheduler.Connect
     {
         [FunctionName("importRequest")]
         public Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Function, "post", Route = null)] HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = null)] HttpRequest req,
             ILogger log)
             => Import(req, log);
     }

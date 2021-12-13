@@ -21,5 +21,8 @@
 
         internal const string DsHeaderUri = "ds-uri";
         internal const string DsHeaderUriDescription = "Dime.Scheduler URI";
+
+        internal const string DsHeaderAppend = "ds-append";
+        internal const string DsHeaderAppendDescription = "True to create or update the entity, false to remove it.";
     }
 }
