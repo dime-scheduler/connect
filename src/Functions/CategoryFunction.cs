@@ -14,8 +14,8 @@ namespace Dime.Scheduler.Connect
 {
     public class CategoryFunction : ImportService<Category>
     {
-        [FunctionName("category")]
-        [OpenApiOperation(operationId: OpenApiAttributeValues.OperationId, tags: new[] { OpenApiAttributeValues.OperationTags })]
+        [FunctionName(Functions.Category)]
+        [OpenApiOperation(operationId: Functions.Category, tags: new[] { OpenApiAttributeValues.OperationTags })]
         [OpenApiSecurity(OpenApiAttributeValues.SecurityScheme, SecuritySchemeType.ApiKey, Name = OpenApiAttributeValues.SecurityName, In = OpenApiSecurityLocationType.Query)]
         [OpenApiRequestBody(OpenApiAttributeValues.BodyJson, typeof(Category), Description = OpenApiAttributeValues.BodyDescription)]
         [OpenApiResponseWithBody(statusCode: HttpStatusCode.OK, contentType: OpenApiAttributeValues.BodyJson, bodyType: typeof(string), Description = OpenApiAttributeValues.ReturnDescription)]

@@ -14,8 +14,8 @@ namespace Dime.Scheduler.Connect
 {
     public class FilterGroupFunction : ImportService<FilterGroup>
     {
-        [FunctionName("filterGroup")]
-        [OpenApiOperation(operationId: OpenApiAttributeValues.OperationId, tags: new[] { OpenApiAttributeValues.OperationTags })]
+        [FunctionName(Functions.FilterGroup)]
+        [OpenApiOperation(operationId: Functions.FilterGroup, tags: new[] { OpenApiAttributeValues.OperationTags })]
         [OpenApiSecurity(OpenApiAttributeValues.SecurityScheme, SecuritySchemeType.ApiKey, Name = OpenApiAttributeValues.SecurityName, In = OpenApiSecurityLocationType.Query)]
         [OpenApiRequestBody(OpenApiAttributeValues.BodyJson, typeof(FilterGroup), Description = OpenApiAttributeValues.BodyDescription)]
         [OpenApiResponseWithBody(statusCode: HttpStatusCode.OK, contentType: OpenApiAttributeValues.BodyJson, bodyType: typeof(string), Description = OpenApiAttributeValues.ReturnDescription)]

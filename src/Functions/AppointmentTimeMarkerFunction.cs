@@ -14,8 +14,8 @@ namespace Dime.Scheduler.Connect
 {
     public class AppointmentTimeMarkerFunction : ImportService<AppointmentTimeMarker>
     {
-        [FunctionName("appointmentTimeMarker")]
-        [OpenApiOperation(operationId: OpenApiAttributeValues.OperationId, tags: new[] { OpenApiAttributeValues.OperationTags })]
+        [FunctionName(Functions.AppointmentTimeMarker)]
+        [OpenApiOperation(operationId: Functions.AppointmentTimeMarker, tags: new[] { OpenApiAttributeValues.OperationTags })]
         [OpenApiSecurity(OpenApiAttributeValues.SecurityScheme, SecuritySchemeType.ApiKey, Name = OpenApiAttributeValues.SecurityName, In = OpenApiSecurityLocationType.Query)]
         [OpenApiRequestBody(OpenApiAttributeValues.BodyJson, typeof(AppointmentTimeMarker), Description = OpenApiAttributeValues.BodyDescription)]
         [OpenApiResponseWithBody(statusCode: HttpStatusCode.OK, contentType: OpenApiAttributeValues.BodyJson, bodyType: typeof(string), Description = OpenApiAttributeValues.ReturnDescription)]

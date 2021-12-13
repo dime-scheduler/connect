@@ -9,8 +9,8 @@
             Password = password;
         }
 
-        internal string Uri { get; set; }
-        internal string User { get; set; }
-        internal string Password { get; set; }
+        internal string Uri { get; private set; }
+        internal string User { get; private set; }
+        internal string Password { get; private set; }
     }
 }

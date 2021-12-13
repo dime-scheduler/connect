@@ -1,8 +1,7 @@
 ﻿namespace Dime.Scheduler.Connect
 {
     internal class OpenApiAttributeValues
-    {
-        internal const string OperationId = "Run";
+    {        
         internal const string OperationTags = "Dime.Scheduler";
 
         internal const string SecurityScheme = "function_key";
