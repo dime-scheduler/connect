@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.Azure.WebJobs.Extensions.OpenApi.Core.Attributes;
-using Microsoft.Azure.WebJobs.Extensions.OpenApi.Core.Enums;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using System.Net;
@@ -16,7 +15,6 @@ namespace Dime.Scheduler.Connect
     {
         [FunctionName(Functions.AppointmentImportance)]
         [OpenApiOperation(operationId: Functions.AppointmentImportance, tags: new[] { OpenApiAttributeValues.OperationTags })]
-        [OpenApiSecurity(OpenApiAttributeValues.SecurityScheme, SecuritySchemeType.ApiKey, Name = OpenApiAttributeValues.SecurityName, In = OpenApiSecurityLocationType.Query)]
         [OpenApiRequestBody(OpenApiAttributeValues.BodyJson, typeof(AppointmentImportance), Description = OpenApiAttributeValues.BodyDescription)]
         [OpenApiResponseWithBody(statusCode: HttpStatusCode.OK, contentType: OpenApiAttributeValues.BodyJson, bodyType: typeof(string), Description = OpenApiAttributeValues.ReturnDescription)]
         [OpenApiParameter(name: OpenApiAttributeValues.DsHeaderUri, In = ParameterLocation.Header, Required = true, Description = OpenApiAttributeValues.DsHeaderUriDescription)]

@@ -2,7 +2,7 @@
 {
     internal class OpenApiAttributeValues
     {        
-        internal const string OperationTags = "Dime.Scheduler";
+        internal const string OperationTags = "Dime.Scheduler Import";
 
         internal const string SecurityScheme = "function_key";
         internal const string SecurityName = "code";

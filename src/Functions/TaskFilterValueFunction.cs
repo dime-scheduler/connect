@@ -15,8 +15,7 @@ namespace Dime.Scheduler.Connect
     public class TaskFilterValueFunction : ImportService<TaskFilterValue>
     {
         [FunctionName(Functions.TaskFilterValue)]
-        [OpenApiOperation(operationId: Functions.TaskFilterValue, tags: new[] { OpenApiAttributeValues.OperationTags })]
-        [OpenApiSecurity(OpenApiAttributeValues.SecurityScheme, SecuritySchemeType.ApiKey, Name = OpenApiAttributeValues.SecurityName, In = OpenApiSecurityLocationType.Query)]
+        [OpenApiOperation(operationId: Functions.TaskFilterValue, tags: new[] { OpenApiAttributeValues.OperationTags })]        
         [OpenApiRequestBody(OpenApiAttributeValues.BodyJson, typeof(TaskFilterValue), Description = OpenApiAttributeValues.BodyDescription)]
         [OpenApiResponseWithBody(statusCode: HttpStatusCode.OK, contentType: OpenApiAttributeValues.BodyJson, bodyType: typeof(string), Description = OpenApiAttributeValues.ReturnDescription)]
         [OpenApiParameter(name: OpenApiAttributeValues.DsHeaderUri, In = ParameterLocation.Header, Required = true, Description = OpenApiAttributeValues.DsHeaderUriDescription)]
