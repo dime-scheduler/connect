@@ -1,22 +1,21 @@
-﻿using Dime.Scheduler.Sdk.Import;
+﻿using System.Net;
+using System.Threading.Tasks;
+using Dime.Scheduler.Sdk.Import;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.Azure.WebJobs.Extensions.OpenApi.Core.Attributes;
-using Microsoft.Azure.WebJobs.Extensions.OpenApi.Core.Enums;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using System.Net;
-using System.Threading.Tasks;
 
 namespace Dime.Scheduler.Connect
 {
     public class AppointmentUriFunction : ImportService<AppointmentUri>
     {
         [FunctionName(Functions.AppointmentUri)]
-        [OpenApiOperation(operationId: Functions.AppointmentUri, tags: new[] { OpenApiAttributeValues.OperationTags })]        
-        [OpenApiRequestBody(OpenApiAttributeValues.BodyJson, typeof(AppointmentUri), Description = OpenApiAttributeValues.BodyDescription)]
+        [OpenApiOperation(operationId: Functions.AppointmentUri, tags: new[] { OpenApiAttributeValues.OperationTags })]
+        [OpenApiRequestBody(OpenApiAttributeValues.BodyJson, typeof(AppointmentUri), Description = OpenApiAttributeValues.BodyDescription, Required = true)]
         [OpenApiResponseWithBody(statusCode: HttpStatusCode.OK, contentType: OpenApiAttributeValues.BodyJson, bodyType: typeof(string), Description = OpenApiAttributeValues.ReturnDescription)]
         [OpenApiParameter(name: OpenApiAttributeValues.DsHeaderUri, In = ParameterLocation.Header, Required = true, Description = OpenApiAttributeValues.DsHeaderUriDescription)]
         [OpenApiParameter(name: OpenApiAttributeValues.DsHeaderUser, In = ParameterLocation.Header, Required = true, Description = OpenApiAttributeValues.DsHeaderUserDescription)]

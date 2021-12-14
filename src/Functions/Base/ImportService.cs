@@ -1,11 +1,11 @@
-﻿using Dime.Scheduler.Sdk;
+﻿using System.IO;
+using System.Threading.Tasks;
+using Dime.Scheduler.Sdk;
 using Dime.Scheduler.Sdk.Import;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using System.IO;
-using System.Threading.Tasks;
 
 namespace Dime.Scheduler.Connect
 {
@@ -27,12 +27,11 @@ namespace Dime.Scheduler.Connect
             if (string.IsNullOrEmpty(url))
                 return new BadRequestObjectResult(ResponseMessages.UriMissing);
 
-            DimeSchedulerCredentials credentials = new(url, user, password);
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
             T entity = JsonConvert.DeserializeObject<T>(requestBody);
 
-            IAuthenticator authenticator = new FormsAuthenticator(credentials.Uri, credentials.User, credentials.Password);
-            DimeSchedulerClient client = new(credentials.Uri, authenticator);
+            IAuthenticator authenticator = new FormsAuthenticator(user, url, password);
+            DimeSchedulerClient client = new(url, authenticator);
 
             IImportEndpoint importEndpoint = await client.Import.Request();
             ImportSet importSet = await importEndpoint.ProcessAsync(entity, append ? TransactionType.Append : TransactionType.Delete);
