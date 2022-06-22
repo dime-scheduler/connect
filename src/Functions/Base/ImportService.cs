@@ -39,9 +39,11 @@ namespace Dime.Scheduler.Connect
             if (importSet.Success)
                 return new OkObjectResult(importSet);
 
-            ObjectResult result = new(importSet.Message);
-            result.StatusCode = 500;
-            return result;
+            return new ContentResult
+            {
+                StatusCode = 500,
+                Content = importSet.Message
+            };
         }
     }
 }
