@@ -30,7 +30,7 @@ namespace Dime.Scheduler.Connect
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
             T entity = JsonConvert.DeserializeObject<T>(requestBody);
 
-            IAuthenticator authenticator = new FormsAuthenticator(user, url, password);
+            IAuthenticator authenticator = new FormsAuthenticator(url, user, password);
             DimeSchedulerClient client = new(url, authenticator);
 
             IImportEndpoint importEndpoint = await client.Import.Request();
