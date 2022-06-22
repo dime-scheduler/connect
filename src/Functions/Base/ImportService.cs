@@ -40,7 +40,7 @@ namespace Dime.Scheduler.Connect
                 return new OkObjectResult(importSet);
 
             ObjectResult result = new(importSet.Message);
-            result.StatusCode = importSet.Status;
+            result.StatusCode = 500;
             return result;
         }
     }
