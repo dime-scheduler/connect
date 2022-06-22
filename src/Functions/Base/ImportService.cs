@@ -36,7 +36,12 @@ namespace Dime.Scheduler.Connect
             IImportEndpoint importEndpoint = await client.Import.Request();
             ImportSet importSet = await importEndpoint.ProcessAsync(entity, append ? TransactionType.Append : TransactionType.Delete);
 
-            return new OkObjectResult(importSet);
+            if (importSet.Success)
+                return new OkObjectResult(importSet);
+
+            ObjectResult result = new(importSet.Message);
+            result.StatusCode = importSet.Status;
+            return result;
         }
     }
 }
