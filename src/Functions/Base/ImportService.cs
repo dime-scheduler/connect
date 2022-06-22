@@ -1,4 +1,6 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
+using System.Net;
 using System.Threading.Tasks;
 using Dime.Scheduler.Sdk;
 using Dime.Scheduler.Sdk.Import;
@@ -36,7 +38,10 @@ namespace Dime.Scheduler.Connect
             IImportEndpoint importEndpoint = await client.Import.Request();
             ImportSet importSet = await importEndpoint.ProcessAsync(entity, append ? TransactionType.Append : TransactionType.Delete);
 
-            return new OkObjectResult(importSet);
+            if (importSet.Success)
+                return new OkObjectResult(importSet);
+
+            throw new Exception(importSet.Message);
         }
     }
 }
