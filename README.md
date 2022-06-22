@@ -21,7 +21,13 @@
 
 <h1 align="center">Dime.Scheduler Connect</h1>
 
-Connect with Dime.Scheduler through an Azure Function.
+Connect with Dime.Scheduler through an Azure Function. The Azure function does the heavy lifting by exposing a REST API and invoking the [Dime.Scheduler SDK](https://github.com/dime-scheduler/sdk-dotnet).
+
+<div align="center">
+  <img src="assets/ctx.png" height="300px" />
+</div>
+
+Unless you intend to run a private ithe Azure function is not to be invoked directly: the API manager is the only trusted source of Dime.Scheduler Connect.
 
 ## Build and run
 
@@ -34,7 +40,7 @@ Follow the instructions as specified [here](https://docs.microsoft.com/en-us/azu
 | Description | Command                                                                 |
 | ----------- | ----------------------------------------------------------------------- |
 | Build       | `docker build -t dimesoftware/dimescheduler-connect:initial .`          |
-| Push        | `docker push dimesoftware/dimescheduler-connect:initial`               |
+| Push        | `docker push dimesoftware/dimescheduler-connect:initial`                |
 | Download    | `docker pull dimesoftware/dimescheduler-connect`                        |
 | Run         | `docker run -it -d -p 8080:80 dimesoftware/dimescheduler-connect:{TAG}` |
 
