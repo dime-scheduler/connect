@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Threading.Tasks;
 using Dime.Scheduler.Sdk;
 using Dime.Scheduler.Sdk.Import;
@@ -33,17 +34,28 @@ namespace Dime.Scheduler.Connect
             IAuthenticator authenticator = new FormsAuthenticator(url, user, password);
             DimeSchedulerClient client = new(url, authenticator);
 
-            IImportEndpoint importEndpoint = await client.Import.Request();
-            ImportSet importSet = await importEndpoint.ProcessAsync(entity, append ? TransactionType.Append : TransactionType.Delete);
-
-            if (importSet.Success)
-                return new OkObjectResult(importSet);
-
-            return new ContentResult
+            try
             {
-                StatusCode = 500,
-                Content = importSet.Message
-            };
+                IImportEndpoint importEndpoint = await client.Import.Request();
+                ImportSet importSet = await importEndpoint.ProcessAsync(entity, append ? TransactionType.Append : TransactionType.Delete);
+
+                if (importSet.Success)
+                    return new OkObjectResult(importSet);
+
+                return new ContentResult
+                {
+                    StatusCode = 500,
+                    Content = importSet.Message ?? importSet.Phrase
+                };
+            }
+            catch (Exception ex)
+            {
+                return new ContentResult
+                {
+                    StatusCode = 500,
+                    Content = ex.Message
+                };
+            }
         }
     }
 }

@@ -22,7 +22,7 @@
 		<PackageReference Include="Microsoft.Azure.Functions.Extensions" Version="1.1.0" />
 		<PackageReference Include="Microsoft.Azure.WebJobs.Extensions.OpenApi" Version="1.3.0" />
 		<PackageReference Include="Microsoft.NET.Sdk.Functions" Version="4.1.1" />
-		<PackageReference Include="Dime.Scheduler.Sdk" Version="1.0.0-beta.9" />
+		<PackageReference Include="Dime.Scheduler.Sdk" Version="1.0.0-beta.11" />
 		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.16.1" />
 	</ItemGroup>
 	<ItemGroup>
