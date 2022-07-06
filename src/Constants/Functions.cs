@@ -32,6 +32,7 @@
         internal const string TaskFilterValue = "taskFilterValue";
         internal const string Task = "task";
         internal const string TaskLocked = "taskLocked";
+        internal const string TaskUri = "taskUri";
         internal const string TimeMarker = "timeMarker";
     }
 }

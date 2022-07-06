@@ -17,7 +17,7 @@ namespace Dime.Scheduler.Connect
         private const string Summary = "Resource";
 
         [FunctionName(Functions.Resource)]
-        [OpenApiOperation(operationId: Functions.Resource, tags: new[] { OpenApiAttributeValues.OperationTags }, Description = Description, Summary = Summary)]
+        [OpenApiOperation(operationId: Functions.Resource, tags: new[] { Tags.Resource }, Description = Description, Summary = Summary)]
         [OpenApiRequestBody(OpenApiAttributeValues.BodyJson, typeof(Resource), Description = OpenApiAttributeValues.BodyDescription, Required = true)]
         [OpenApiResponseWithBody(statusCode: HttpStatusCode.OK, contentType: OpenApiAttributeValues.BodyJson, bodyType: typeof(string), Description = OpenApiAttributeValues.ReturnDescription)]
         [OpenApiParameter(name: OpenApiAttributeValues.DsHeaderUri, In = ParameterLocation.Header, Required = true, Description = OpenApiAttributeValues.DsHeaderUriDescription)]

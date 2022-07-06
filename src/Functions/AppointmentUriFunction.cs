@@ -17,7 +17,7 @@ namespace Dime.Scheduler.Connect
         private const string Summary = "Appointment URI";
 
         [FunctionName(Functions.AppointmentUri)]
-        [OpenApiOperation(operationId: Functions.AppointmentUri, tags: new[] { OpenApiAttributeValues.OperationTags }, Description = Description, Summary = Summary)]
+        [OpenApiOperation(operationId: Functions.AppointmentUri, tags: new[] { Tags.Appointment, Tags.Uri }, Description = Description, Summary = Summary)]
         [OpenApiRequestBody(OpenApiAttributeValues.BodyJson, typeof(AppointmentUri), Description = OpenApiAttributeValues.BodyDescription, Required = true)]
         [OpenApiResponseWithBody(statusCode: HttpStatusCode.OK, contentType: OpenApiAttributeValues.BodyJson, bodyType: typeof(string), Description = OpenApiAttributeValues.ReturnDescription)]
         [OpenApiParameter(name: OpenApiAttributeValues.DsHeaderUri, In = ParameterLocation.Header, Required = true, Description = OpenApiAttributeValues.DsHeaderUriDescription)]

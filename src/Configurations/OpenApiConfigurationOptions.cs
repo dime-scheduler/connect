@@ -10,8 +10,8 @@ namespace Dime.Scheduler.Connect
         public override OpenApiInfo Info { get; set; } = new OpenApiInfo()
         {
             Version = GetOpenApiDocVersion(),
-            Title = "OpenAPI Document on Dime.Scheduler Connect",
-            Description = "Link any system to Dime.Scheduler through Dime.Scheduler Connect",
+            Title = Environment.GetEnvironmentVariable("DimeSchedulerApi__Version") ?? "v0.1",
+            Description = "Import data into Dime.Scheduler. This is a pre-release version that is not be used in production.This version is compatible with Dime.Scheduler 2022.1.0.",
             Contact = new OpenApiContact()
             {
                 Name = "Dime Software",

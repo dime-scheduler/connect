@@ -14,10 +14,10 @@ namespace Dime.Scheduler.Connect
     public class AssignmentFunction : ImportService<Assignment>
     {
         private const string Description = "By default, this operation creates or updates the record. To remove the record, set the `ds-append` header to false.";
-        private const string Summary = "";
+        private const string Summary = "Assignment";
 
         [FunctionName(Functions.Assignment)]
-        [OpenApiOperation(operationId: Functions.Assignment, tags: new[] { OpenApiAttributeValues.OperationTags }, Description = Description, Summary = Summary)]
+        [OpenApiOperation(operationId: Functions.Assignment, tags: new[] { Tags.Appointment }, Description = Description, Summary = Summary)]
         [OpenApiRequestBody(OpenApiAttributeValues.BodyJson, typeof(Assignment), Description = OpenApiAttributeValues.BodyDescription, Required = true)]
         [OpenApiResponseWithBody(statusCode: HttpStatusCode.OK, contentType: OpenApiAttributeValues.BodyJson, bodyType: typeof(string), Description = OpenApiAttributeValues.ReturnDescription)]
         [OpenApiParameter(name: OpenApiAttributeValues.DsHeaderUri, In = ParameterLocation.Header, Required = true, Description = OpenApiAttributeValues.DsHeaderUriDescription)]

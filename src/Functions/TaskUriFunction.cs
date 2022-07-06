@@ -11,14 +11,14 @@ using Microsoft.OpenApi.Models;
 
 namespace Dime.Scheduler.Connect
 {
-    public class PinFunction : ImportService<Pin>
+    public class TaskUriFunction : ImportService<TaskUri>
     {
         private const string Description = "By default, this operation creates or updates the record. To remove the record, set the `ds-append` header to false.";
-        private const string Summary = "Pin";
+        private const string Summary = "Task URI";
 
-        [FunctionName(Functions.Pin)]
-        [OpenApiOperation(operationId: Functions.Pin, tags: new[] { Tags.Indicator }, Description = Description, Summary = Summary)]
-        [OpenApiRequestBody(OpenApiAttributeValues.BodyJson, typeof(Pin), Description = OpenApiAttributeValues.BodyDescription, Required = true)]
+        [FunctionName(Functions.TaskUri)]
+        [OpenApiOperation(operationId: Functions.TaskUri, tags: new[] { Tags.Task, Tags.Uri }, Description = Description, Summary = Summary)]
+        [OpenApiRequestBody(OpenApiAttributeValues.BodyJson, typeof(TaskUri), Description = OpenApiAttributeValues.BodyDescription, Required = true)]
         [OpenApiResponseWithBody(statusCode: HttpStatusCode.OK, contentType: OpenApiAttributeValues.BodyJson, bodyType: typeof(string), Description = OpenApiAttributeValues.ReturnDescription)]
         [OpenApiParameter(name: OpenApiAttributeValues.DsHeaderUri, In = ParameterLocation.Header, Required = true, Description = OpenApiAttributeValues.DsHeaderUriDescription)]
         [OpenApiParameter(name: OpenApiAttributeValues.DsHeaderUser, In = ParameterLocation.Header, Required = true, Description = OpenApiAttributeValues.DsHeaderUserDescription)]
