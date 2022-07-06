@@ -14,7 +14,7 @@ namespace Dime.Scheduler.Connect
     public class ResourceCapacityFunction : ImportService<ResourceCapacity>
     {
         private const string Description = "";
-        private const string Summary = "";
+        private const string Summary = "Resource Capacity";
 
         [FunctionName(Functions.ResourceCapacity)]
         [OpenApiOperation(operationId: Functions.ResourceCapacity, tags: new[] { OpenApiAttributeValues.OperationTags }, Description = Description, Summary = Summary)]

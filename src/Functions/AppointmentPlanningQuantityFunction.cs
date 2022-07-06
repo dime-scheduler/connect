@@ -14,7 +14,7 @@ namespace Dime.Scheduler.Connect
     public class AppointmentPlanningQuantityFunction : ImportService<AppointmentPlanningQuantity>
     {
         private const string Description = "";
-        private const string Summary = "";
+        private const string Summary = "Appointment Planning Quantity";
 
         [FunctionName(Functions.AppointmentPlanningQuantity)]
         [OpenApiOperation(operationId: Functions.AppointmentPlanningQuantity, tags: new[] { OpenApiAttributeValues.OperationTags }, Description = Description, Summary = Summary)]

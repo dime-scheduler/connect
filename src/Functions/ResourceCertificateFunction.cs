@@ -14,7 +14,7 @@ namespace Dime.Scheduler.Connect
     public class ResourceCertificateFunction : ImportService<ResourceCertificate>
     {
         private const string Description = "";
-        private const string Summary = "";
+        private const string Summary = "Resource Certificate";
 
         [FunctionName(Functions.ResourceCertificate)]
         [OpenApiOperation(operationId: Functions.ResourceCertificate, tags: new[] { OpenApiAttributeValues.OperationTags }, Description = Description, Summary = Summary)]

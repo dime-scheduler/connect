@@ -13,7 +13,7 @@ namespace Dime.Scheduler.Connect
 {
     public class ActionUriFunction : ImportService<ActionUri>
     {
-        private const string Description = "An action URI is a template that is populated and invoked with the parameters of its runtime context.";
+        private const string Description = "An **action URI** is a template that is populated and invoked with the parameters of its runtime context. By default, this operation creates or updates the record. To remove the record, set the `ds-append` header to false.";
         private const string Summary = "Action URI";
 
         [FunctionName(Functions.ActionUri)]

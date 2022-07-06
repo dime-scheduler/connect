@@ -14,7 +14,7 @@ namespace Dime.Scheduler.Connect
     public class CaptionFunction : ImportService<Caption>
     {
         private const string Description = "";
-        private const string Summary = "";
+        private const string Summary = "Caption";
 
         [FunctionName(Functions.Caption)]
         [OpenApiOperation(operationId: Functions.Caption, tags: new[] { OpenApiAttributeValues.OperationTags }, Description = Description, Summary = Summary)]

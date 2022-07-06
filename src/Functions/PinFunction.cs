@@ -13,8 +13,8 @@ namespace Dime.Scheduler.Connect
 {
     public class PinFunction : ImportService<Pin>
     {
-        private const string Description = "";
-        private const string Summary = "";
+        private const string Description = "By default, this operation creates or updates the record. To remove the record, set the `ds-append` header to false.";
+        private const string Summary = "Pin";
 
         [FunctionName(Functions.Pin)]
         [OpenApiOperation(operationId: Functions.Pin, tags: new[] { OpenApiAttributeValues.OperationTags }, Description = Description, Summary = Summary)]

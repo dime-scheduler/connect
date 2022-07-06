@@ -14,7 +14,7 @@ namespace Dime.Scheduler.Connect
     public class ResourceCalendarFunction : ImportService<ResourceCalendar>
     {
         private const string Description = "";
-        private const string Summary = "";
+        private const string Summary = "Resource Calendar";
 
         [FunctionName(Functions.ResourceCalendar)]
         [OpenApiOperation(operationId: Functions.ResourceCalendar, tags: new[] { OpenApiAttributeValues.OperationTags }, Description = Description, Summary = Summary)]

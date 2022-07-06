@@ -13,8 +13,8 @@ namespace Dime.Scheduler.Connect
 {
     public class ContainerFunction : ImportService<Container>
     {
-        private const string Description = "";
-        private const string Summary = "";
+        private const string Description = "By default, this operation creates or updates the record. To remove the record, set the `ds-append` header to false.";
+        private const string Summary = "Container";
 
         [FunctionName(Functions.Container)]
         [OpenApiOperation(operationId: Functions.Container, tags: new[] { OpenApiAttributeValues.OperationTags }, Description = Description, Summary = Summary)]
