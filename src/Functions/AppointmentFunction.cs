@@ -13,8 +13,8 @@ namespace Dime.Scheduler.Connect
 {
     public class AppointmentFunction : ImportService<Appointment>
     {
-        private const string Description = "";
-        private const string Summary = "";
+        private const string Description = "An appointment is a planned task that holds information on the event such as date, time, and the assigned resources.";
+        private const string Summary = "Appointment";
 
         [FunctionName(Functions.Appointment)]
         [OpenApiOperation(operationId: Functions.Appointment, tags: new[] { OpenApiAttributeValues.OperationTags }, Description = Description, Summary = Summary)]
