@@ -12,8 +12,11 @@ namespace Dime.Scheduler.Connect
 {
     public class TaskFunction : ImportService<Sdk.Import.Task>
     {
+        private const string Description = "";
+        private const string Summary = "";
+
         [FunctionName(Functions.Task)]
-        [OpenApiOperation(operationId: Functions.Task, tags: new[] { OpenApiAttributeValues.OperationTags })]
+        [OpenApiOperation(operationId: Functions.Task, tags: new[] { OpenApiAttributeValues.OperationTags }, Description = Description, Summary = Summary)]
         [OpenApiRequestBody(OpenApiAttributeValues.BodyJson, typeof(Sdk.Import.Task), Description = OpenApiAttributeValues.BodyDescription, Required = true)]
         [OpenApiResponseWithBody(statusCode: HttpStatusCode.OK, contentType: OpenApiAttributeValues.BodyJson, bodyType: typeof(string), Description = OpenApiAttributeValues.ReturnDescription)]
         [OpenApiParameter(name: OpenApiAttributeValues.DsHeaderUri, In = ParameterLocation.Header, Required = true, Description = OpenApiAttributeValues.DsHeaderUriDescription)]

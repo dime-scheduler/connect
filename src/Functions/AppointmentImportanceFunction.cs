@@ -13,8 +13,11 @@ namespace Dime.Scheduler.Connect
 {
     public class AppointmentImportanceFunction : ImportService<AppointmentImportance>
     {
+        private const string Description = "";
+        private const string Summary = "";
+
         [FunctionName(Functions.AppointmentImportance)]
-        [OpenApiOperation(operationId: Functions.AppointmentImportance, tags: new[] { OpenApiAttributeValues.OperationTags })]
+        [OpenApiOperation(operationId: Functions.AppointmentImportance, tags: new[] { OpenApiAttributeValues.OperationTags }, Description = Description, Summary = Summary)]
         [OpenApiRequestBody(OpenApiAttributeValues.BodyJson, typeof(AppointmentImportance), Description = OpenApiAttributeValues.BodyDescription, Required = true)]
         [OpenApiResponseWithBody(statusCode: HttpStatusCode.OK, contentType: OpenApiAttributeValues.BodyJson, bodyType: typeof(string), Description = OpenApiAttributeValues.ReturnDescription)]
         [OpenApiParameter(name: OpenApiAttributeValues.DsHeaderUri, In = ParameterLocation.Header, Required = true, Description = OpenApiAttributeValues.DsHeaderUriDescription)]

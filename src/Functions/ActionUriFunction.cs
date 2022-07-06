@@ -13,8 +13,11 @@ namespace Dime.Scheduler.Connect
 {
     public class ActionUriFunction : ImportService<ActionUri>
     {
+        private const string Description = "An action URI is a template that is populated and invoked with the parameters of its runtime context.";
+        private const string Summary = "Appends or removes an action URI, which is a template that is populated and invoked with the parameters of its runtime context.";
+
         [FunctionName(Functions.ActionUri)]
-        [OpenApiOperation(operationId: Functions.ActionUri, tags: new[] { OpenApiAttributeValues.OperationTags })]
+        [OpenApiOperation(operationId: Functions.ActionUri, tags: new[] { OpenApiAttributeValues.OperationTags }, Description = Description, Summary = Summary)]
         [OpenApiRequestBody(OpenApiAttributeValues.BodyJson, typeof(ActionUri), Description = OpenApiAttributeValues.BodyDescription, Required = true)]
         [OpenApiResponseWithBody(statusCode: HttpStatusCode.OK, contentType: OpenApiAttributeValues.BodyJson, bodyType: typeof(string), Description = OpenApiAttributeValues.ReturnDescription)]
         [OpenApiParameter(name: OpenApiAttributeValues.DsHeaderUri, In = ParameterLocation.Header, Required = true, Description = OpenApiAttributeValues.DsHeaderUriDescription)]
